@@ -1,0 +1,120 @@
+/* App.css */
+
+.fixed-nav-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.logo {
+  order: 1; /* Move the logo to the left */
+}
+
+.list {
+  order: 2; /* Center-align the navigation links */
+}
+
+.list ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.list li {
+  margin-right: 2.5vw;
+}
+
+.list a {
+  text-decoration: none; /* Remove underline from anchor elements */
+  font-size: 1.4vw;
+  color: black;
+}
+
+.btns {
+  order: 3; /* Move the button to the right */
+}
+
+.btn {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2vw;
+}
+
+.hamburger {
+  order: 4; /* Optionally adjust the order of the hamburger icon */
+}
+.main {
+  display: flex;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.child {
+  flex: 1;
+  height: 500px; /* Adjust the height as needed */
+ 
+  margin: 10px; /* Adjust margin as needed */
+}
+
+.child.one{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+.home-left-content1{
+  padding-bottom: 0px;
+}
+.home-left-content2{
+  padding-bottom: 2px;
+  font-size: 2vw;
+}
+
+/* Add the following styles for child two */
+.child.two {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.one a{
+  text-decoration: none;
+}
+
+.child.two img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .child.one {
+    order: 2;
+  }
+
+  .child.two {
+    order: 1;
+  }
+  .home-left-content1 h1{
+    font-size: 4vw;
+  }
+}

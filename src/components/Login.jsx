@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
+
 
 function Login() {
+  const[email,setEmail]=useState('');
+  const[password,setPassword]=useState(''); 
+
+  const loginSubmit = async (e) => {
+    e.preventDefault();
+
+    const userData = {
+      email: email,
+     
+      password: password
+    };
+
+    try {
+      const response = await axios.post("/api/login", userData);
+      console.log(response.data); // Assuming your server sends back useful information
+      console.log(response.status);
+      // Optionally, you can redirect the user to another page after successful signup
+      // For example, if you are using React Router:
+      // history.push('/login');
+    } catch (error) {
+      console.error("Signup failed:", error);
+    }
+  };
+
   return (
     <div>
       <section className="vh-100"
@@ -16,27 +42,31 @@ function Login() {
                   <div className="card-body p-5">
                     <h2 className="text-uppercase text-center mb-5">Login your account</h2>
 
-                    <form action="" method="">
+                    <form>
 
                       <div className="form-outline mb-4">
-                        <input type="text" id="username" className="form-control form-control-lg" name="username" />
+                        <input type="text" id="username" className="form-control form-control-lg" name="username" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
                         <label className="form-label" htmlFor="username">Your Name</label>
                       </div>
 
                       <div className="form-outline mb-4">
-                        <input type="password" id="password" className="form-control form-control-lg" name="password" />
+                        <input type="password" id="password" className="form-control form-control-lg" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
                         <label className="form-label" htmlFor="password">Password</label>
                       </div>
 
-                      <div className="d-flex justify-content-center">
-                        <button type="submit" className="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
-                      </div>
+                      {/* <div className="d-flex justify-content-center">
+                        <button type="submit" className="btn btn-success btn-block btn-lg gradient-custom-4 text-body" >Login</button>
+                      </div> */}
 
                       <p className="text-center text-muted mt-5 mb-0">
                         Do not have an account? <Link to="/signup" className="fw-bold text-body"><u>Signup here</u></Link>
                       </p>
+                      <div className="d-flex justify-content-center">
+                        <button type="submit" className="btn btn-success btn-block btn-lg gradient-custom-4 text-body" onClick={loginSubmit}>Login</button>
+                      </div>
 
                     </form>
+                    
 
                   </div>
                 </div>
